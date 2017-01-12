@@ -120,13 +120,13 @@
 	          <ul class="catalog-main">
 	               <?php foreach ($catalog_list as $row):?>
                    <li>
-                     <span><a href="#" title="<?php echo $row->name?>"><?php echo $row->name?></a></span>
+                     <span><a href="<?php echo base_url('product/catalog/'.$row->id)?>" title="<?php echo $row->name?>"><?php echo $row->name?></a></span>
                      <?php if(!empty($row->subs)):?>
                      <!-- lay danh sach danh muc con -->
              	 	 <ul class="catalog-sub">  
              	 	        <?php foreach ($row->subs as $sub):?>    					                    
                             <li>
-                                <a href="" title="<?php echo $sub->name?>"> 
+                                <a href="<?php echo base_url('product/catalog/'.$sub->id)?>" title="<?php echo $sub->name?>"> 
                                 <?php echo $sub->name?></a>
                             </li>
                             <?php endforeach;?>		 			                    
