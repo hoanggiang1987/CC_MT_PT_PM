@@ -16,7 +16,26 @@ class MY_Controller extends CI_Controller{
                 break;
             }
             default:{
-
+                 //xu ly du lieu o trang ngoai
+                    //lay danh sach danh muc san pham
+                    $this->load->model('catalog_model');
+                    $input = array();
+                    $input['where'] = array('parent_id' => 0);
+                    $catalog_list = $this->catalog_model->get_list($input);
+                    foreach ($catalog_list as $row)
+                    {
+                        $input['where'] = array('parent_id' => $row->id);
+                        $subs = $this->catalog_model->get_list($input);
+                        $row->subs = $subs;
+                    }
+                    $this->data['catalog_list'] = $catalog_list;
+                    
+                    //lay danh sach bai viet moi
+                    $this->load->model('news_model');
+                    $input = array();
+                    $input['limit'] = array(5, 0);
+                    $news_list = $this->news_model->get_list($input);
+                    $this->data['news_list'] = $news_list;
             }
         }
     }

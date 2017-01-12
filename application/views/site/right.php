@@ -32,27 +32,15 @@
 			    </div>
 			    <div class="content-box">
 			       <ul class="news">
-			            			            <li>
-			                <a href="news/view/4.html" title="Mỹ tăng cường không kích Iraq">
-			                <img src="<?php echo public_url()?>/site/images/li.png">
-			                Mỹ tăng cường không kích Iraq	                        </a>
+				   		<?php foreach ($news_list as $row):?>
+			            <li>
+			                <a href="" title="<?php echo $row->title?> ">
+			                <img src="<?php echo base_url('upload/news/'.$row->image_link)?>" style="width:50px" alt="<?php echo $row->title?> ">
+			                <?php echo $row->title?>                        
+			                </a>
 	                     </li>
-	                    			            <li>
-			                <a href="news/view/3.html" title="Hà Nội: CSGT tìm người thân giúp cháu bé 8 tuổi đi lạc">
-			                <img src="<?php echo public_url()?>/site/images/li.png">
-			                Hà Nội: CSGT tìm người thân giúp cháu bé 8 tuổi đi lạc	                        </a>
-	                     </li>
-	                    			            <li>
-			                <a href="news/view/2.html" title="Arsenal đồng ý bán Vermaelen cho Barcelona">
-			                <img src="<?php echo public_url()?>/site/images/li.png">
-			                Arsenal đồng ý bán Vermaelen cho Barcelona	                        </a>
-	                     </li>
-	                    			            <li>
-			                <a href="news/view/1.html" title="Nhà lầu siêu xe hàng mã ế sưng, đồ chơi biển đảo hút khách">
-			                <img src="<?php echo public_url()?>/site/images/li.png">
-			                Nhà lầu siêu xe hàng mã ế sưng, đồ chơi biển đảo hút khách	                        </a>
-	                     </li>
-	                    	             </ul>
+	                     <?php endforeach;?>
+	            	</ul>
 	    </div>
    </div>		<!-- End news -->
 		

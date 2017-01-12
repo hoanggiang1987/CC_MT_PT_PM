@@ -116,7 +116,7 @@
 			
 							<ul class="sub">
 											<li>
-							<a href="admin/slide.html">
+							<a href="<?php echo admin_url('slide') ?>">
 								Slide							</a>
 						</li>
 											<li>

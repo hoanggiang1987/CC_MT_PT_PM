@@ -10,7 +10,7 @@
 						<label for="param_price_from" class="form-label" style="width:70px">Giá từ:<span class="req">*</span></label>
 						<div class="form-item" style="width:90px">
 							<select class="input" id="price_from" name="price_from">
-							     							           <option value="0">
+							     		 <option value="0">
 							           0 đ
 							           </option>
 							     							           <option value="1000000">
@@ -118,102 +118,23 @@
 		</div>
 		<div class="content-box"><!-- The content-box -->
 	          <ul class="catalog-main">
-                           <li>
-                     		             <span><a href="#" title="Tivi">Tivi</a></span>
+	               <?php foreach ($catalog_list as $row):?>
+                   <li>
+                     <span><a href="#" title="<?php echo $row->name?>"><?php echo $row->name?></a></span>
+                     <?php if(!empty($row->subs)):?>
                      <!-- lay danh sach danh muc con -->
-             	 	 <ul class="catalog-sub"> 
-             	 	            					                    
+             	 	 <ul class="catalog-sub">  
+             	 	        <?php foreach ($row->subs as $sub):?>    					                    
                             <li>
-                            <a href="danh-muc-Toshiba/18.html" title=" Acer"> 
-                            Toshiba</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-Samsung/17.html" title=" Acer"> 
-                            Samsung</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-Panasonic/16.html" title=" Acer"> 
-                            Panasonic</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-LG/15.html" title=" Acer"> 
-                            LG</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-JVC/14.html" title=" Acer"> 
-                            JVC</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-AKAI/13.html" title=" Acer"> 
-                            AKAI</a>
-                            </li>		
-                            			                    
+                                <a href="" title="<?php echo $sub->name?>"> 
+                                <?php echo $sub->name?></a>
+                            </li>
+                            <?php endforeach;?>		 			                    
                      </ul>
-                     	            </li>
-	                       <li>
-                     		             <span><a href="#" title="Điện thoại">Điện thoại</a></span>
-                     <!-- lay danh sach danh muc con -->
-             	 	 <ul class="catalog-sub"> 
-             	 	            					                    
-                            <li>
-                            <a href="danh-muc-HTC/12.html" title=" Acer"> 
-                            HTC</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-BlackBerry/11.html" title=" Acer"> 
-                            BlackBerry</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-Asus/10.html" title=" Acer"> 
-                            Asus</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-Apple/9.html" title=" Acer"> 
-                            Apple</a>
-                            </li>		
-                            			                    
-                     </ul>
-                     	            </li>
-	                       <li>
-                     		             <span><a href="#" title="Laptop">Laptop</a></span>
-                     <!-- lay danh sach danh muc con -->
-             	 	 <ul class="catalog-sub"> 
-             	 	            					                    
-                            <li>
-                            <a href="danh-muc-HP/8.html" title=" Acer"> 
-                            HP</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-Dell/7.html" title=" Acer"> 
-                            Dell</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc-Asus/6.html" title=" Acer"> 
-                            Asus</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc--Apple/5.html" title=" Acer"> 
-                             Apple</a>
-                            </li>		
-                                					                    
-                            <li>
-                            <a href="danh-muc--Acer/4.html" title=" Acer"> 
-                             Acer</a>
-                            </li>		
-                            			                    
-                     </ul>
-                     	            </li>
-	        </ul>	    </div><!-- End content-box -->
+                     <?php endif;?>
+                  </li>
+                  <?php endforeach;?>      
+	        </ul>	    
+	    </div><!-- End content-box -->
 </div>
 			  
