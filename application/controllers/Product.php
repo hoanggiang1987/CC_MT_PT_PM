@@ -93,6 +93,11 @@ Class Product extends MY_Controller
         //lấy danh sách ảnh sản phẩm kèm theo
         $image_list = @json_decode($product->image_list);
         $this->data['image_list'] = $image_list;
+
+        //cập nhật lượt view
+        $data = array();
+        $data['view'] = $product->view + 1;
+        $this->product_model->update($product->id, $data);
         
         //lay thong tin cua danh mục san pham
         $catalog = $this->catalog_model->get_info($product->catalog_id);
@@ -100,6 +105,67 @@ Class Product extends MY_Controller
 
         //hiển thị ra view
         $this->data['temp'] = 'site/product/view';
+        $this->load->view('site/layout', $this->data);
+    }
+     function search()
+    {
+        if($this->uri->rsegment('3') == 1)
+        {
+            //lay du lieu tu autocomplete
+            $key =  $this->input->get('term');
+        }else{
+            $key =  $this->input->get('key-search');
+        }
+        
+        $this->data['key'] = trim($key);
+        $input = array();
+        $input['like'] = array('name', $key);
+        $list = $this->product_model->get_list($input);
+        $this->data['list']  = $list;
+        
+        if($this->uri->rsegment('3') == 1)
+        {
+            //xu ly autocomplete
+            $result = array();
+            foreach ($list as $row)
+            {
+                $item = array();
+                $item['id'] = $row->id;
+                $item['label'] = $row->name;
+                $item['value'] = $row->name;
+                $result[] = $item;
+            }
+            //du lieu tra ve duoi dang json
+            die(json_encode($result));
+        }else{
+
+            //load view
+            $this->data['temp'] = 'site/product/search';
+            $this->load->view('site/layout', $this->data);
+        }
+    }
+    
+    /*
+     * Tim kiem theo gia san pham
+     */
+    function search_price()
+    {
+        $price_from = intval($this->input->get('price_from'));
+        $price_to   = intval($this->input->get('price_to'));
+        $this->data['price_from'] = $price_from;
+        $this->data['price_to'] = $price_to;
+        
+        //loc theo gia
+        $input  = array();
+        $input['where'] = array('price >= ' => $price_from, 'price <=' => $price_to);
+        //load thu vien phan timezone_trang 
+        
+        //
+        $list = $this->product_model->get_list($input);
+        $this->data['list'] = $list;
+        
+        //load view
+        $this->data['temp'] = 'site/product/search_price';
         $this->load->view('site/layout', $this->data);
     }
 }
